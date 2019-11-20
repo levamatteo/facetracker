@@ -5,17 +5,19 @@
 // Q: Can you add code that asks you to center face in screen?
 'use strict'
 let osc;
-let v1 = createVector(positions[44][0]);
-let v2 = createVector(positions[50][0]);
+// let v1 = createVector(positions[44][0]);
+// let v2 = createVector(positions[50][0]);
 let playing= false;
-// let img;
+let note;
+let note2;
 var capture;
 var tracker;
 var w = 640,
     h = 480;
-    // function preload() {
-    //   img = loadImage('images/note.jpg');
-    // }
+    function preload() {
+      note = loadImage('images/note.png');
+            note2 = loadImage('images/note2.png');
+    }
 function setup() {
      osc = new p5.Oscillator();
 
@@ -45,15 +47,18 @@ function setup() {
 function draw() {
     image(capture, 0, 0, w, h);
     var positions = tracker.getCurrentPosition();
-ellipse(v1.x, v2.y);
+
+// ellipse(v1.x, v2.y);
   //outline of the face
-    noFill();
-    stroke(255);
-    beginShape();
-    for (var i = 0; i < positions.length; i++) {
-        vertex(positions[i][0], positions[i][1]);
-    }
-    endShape();
+    // noFill();
+    // stroke(255);
+    // beginShape();
+    // for (var i = 0; i < positions.length; i++) {
+    //     vertex(positions[i][0], positions[i][1]);
+    //
+    // }
+    // endShape();
+
 //numbers
     // noStroke();
     // for (var i = 0; i < positions.length; i++) {
@@ -75,6 +80,8 @@ ellipse(v1.x, v2.y);
         // noStroke();
         // fill(0, 255, 255);
         // ellipse(positions[50][0], positions[44][1], 50, 50);
+        image(note, positions[50][0], positions[44][1], 50, 50);
+        image(note2, positions[44][0], positions[50][1], 50, 50);
      osc.freq(smile * 15);
 
       osc.start();
